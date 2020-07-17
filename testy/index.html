@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset = "utf-8" content = "width=device-width, initial-scale=1">
+		<title>Koshai Limited</title>
+		<link rel = "stylesheet" href = "style.css">
+		<link rel = "stylesheet" href = "src/awesome/css/font-awesome.min.css">
+	</head>
+	<body>
+		<nav>
+			<img src = "src/images/muzan2.jpg">
+			<label class = "logo">koshai limited</label>
+			<ul>
+				<li><a class = "active" href = "#">About us</a></li>
+				<li><a href = "#" class = "act">Blog</a></li>
+				<li><a href = "#" class = "act">Topic</a></li>
+				<li><a href = "#" class = "act">Contact</a></li>
+			</ul><div id = "fce"><li class = "kol"><a href = "#"><span class = "fa fa-bars fa-2x"></span></a>
+				<div class = "drpp">
+					<a href = "#">Blog</a>
+					<a href = "#">Topic</a>
+					<a href = "#">Contact</a>
+				</div>
+			</li></ul></div>
+			<label class = "log">building smart future</label>
+		</nav>
+		<div class = "def"><h1>Enabling javafx in ubuntu</h1>
+		Javafx is a framework that allows the programmers to include graphical interface. Though java has other modules to offer the users graphical interface such as swing. But javafx is very flexible and allows the users to customize the program in a large range. Unfortunately javafx does not come with java anymore. It has to be included manually. Here we will show you how to download javafx and integrate it in the program.
+		<ul>
+			<li><a href = "#sec1">Selecting an IDE</a></li>
+			<li><a href = "#sec2">Installing Java</a><ul>
+					<li><a href = "#sec21">Installing the default version</a></li>
+					<li><a href = "#sec22">Installing the newer version (preferable)</a></li>
+					</ul></li>
+			<li><a href = "#sec3">Downloading Javafx</a></li>
+			<li><a href = "#sec4">Integration with IDE</a></li>
+			<li><a href = "#sec5">Execution of program</a></li>
+		</ul>
+		Before doing anything, its important to keep the OS up-to-date. Open the terminal and execute:
+		<pre>sudo apt update &amp;&amp; sudo apt upgrade</pre>
+		<article id = "sec1">
+			<h2>Selecting an IDE</h2>
+			There are many IDEs out there where Java programs can be compiled and executed. Some of the popular IDEs are netbeans, intellij IDEA, ecllipse etc. But they are heavy and somewhat bloated. Here for demonstration purpose we will use geany. It is a fast, interactive and lightweight IDE. To install geany in ubuntu, execute the below command:
+			<pre>sudo apt install geany</pre>
+			Geany comes with a bunch of default plugins. Besides extra other plugins can be installed together or individually. Here we will 'bracket completion' plugin. To install it, execute the command in terminal:
+			<pre>sudo apt install geany-plugin-autoclose</pre>
+			For more information, <a href = "https://www.geany.org/manual/dev/index.html" target = "_blank">click here</a><br>
+			With all these set up, we can move to the next step.
+		</article>
+		<article id = "sec2">
+			<h2>Installing Java</h2>
+			Intalling Java is very straight forward. We will demonstrate installing both versions.
+			<article id = "sec21">
+				<h3>Installing the default version</h3>
+				Execute this command in terminal:
+				<pre>sudo apt install default-jdk default-jdk-headless</pre>
+				With that done, make sure to check the version.
+			</article>
+			<article id = "sec22">
+				<h3>Installing the newer version (preferable)</h3>
+				Here we need to add a third-party repository to get the Oracle JDK. We are using the Linux Uprising one. But you can use any other trusted repository as well.
+				<pre>sudo add-apt-repository ppa:linuxuprising/java</pre>
+				Now update the packages.
+				<pre>sudo apt update</pre>
+				Now execute these commands:
+				<pre>sudo apt install oracle-java14-installer<br>sudo apt install oracle-java14-set-default</pre>
+				With that done, make sure to <a href = "#secv">check the version.</a>
+			</article>
+			<article id = "secv">
+				<h3>Checking the java version</h3>
+				To know what version of java is being used, execute the following command:
+				<pre>java --version</pre>
+				Also excute:
+				<pre>javac --version</pre>
+				But if you have multiple versions of java installed, you can set the default one by executing this command:
+				<pre>update-alternatives --config java</pre>
+				Now a list of installed java packages will be shown. Choose your desired one.
+				You are not finished yet, change your javac version as well. Because the versions of java and javac should be same.
+				<pre>update-alternatives --config javac</pre>
+			</article>
+			For more information, <a href = "https://www.oracle.com/java" target = "_blank">click here</a><br>
+			Now lets go the next stage.
+		</article>
+		<article id = "sec3">
+			<h2>Downloading Javafx</h2>
+			javafx framework is distributed by many websites. Here we will prefer to download the framework from gluonhq.com . To navigate to their javafx download section, <a href = "https://gluonhq.com/products/javafx/" target = "_blank">click here</a><br>
+			If you use the default version of java, you should choose the version of 11.0.2 . But if you install java 14 version then you should choose javafx version 14.0.1 . In both cases, choose "JavaFX Linux SDK".
+		</article>
+		<article id = "sec4">
+			<h2>Integration with IDE</h2>
+			Once downloaded, extract the archive and name folder "javafx" put them on your desired folder. I have put the javafx folder in my <span id = "dir">/.local/share</span> directory.
+			Now open a java file with geany. Go to
+			<div> Build -> Set Build Commands.</div>
+			In the "Java commands" section, set the following,<br>
+			<table>
+				<tr><th>Label</th><th>Command</th><th>section</th></tr>
+				<tr><td>javafx</td><td><pre>javac --module-path /home/{user-name}/.local/share/javafx/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.swt "%f"</pre></td><td>Java commands</td></tr>
+				<tr><td>fx execute</td><td><pre>java --module-path /home/{user-name}/.local/share/javafx/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.swt "%e"</pre></td><td>Execute commands</td></tr>
+			</table>
+			<img src = "src/images/edit.png" alt = "demonstration" class = "iol">
+			We are pretty much done. Lets test now.
+		</article>
+		<article id = "sec5">
+			<h2>Execution of program</h2>
+			Lets code first, write the following code and save it.
+			<pre>import javafx.application.Application;<br>import javafx.scene.Scene;<br>import javafx.scene.control.Button;<br>import javafx.scene.layout.StackPane;<br>import javafx.stage.Stage;<br>public class basic extends Application{<br>	public static void main(String[] args){<br>		launch(args);}<br>	@Override<br>	public void start(Stage primaryStage) throws Exception{<br>		primaryStage.setTitle("There is NO title");<br>		Button butn = new Button();<br>		butn.setText("Hello World");<br>		StackPane lay = new StackPane();<br>		lay.getChildren().add(butn);<br>		Scene scen = new Scene(lay, 300, 250);<br>		primaryStage.setScene(scen);<br>		primaryStage.show();}}</pre>
+			<ul>
+				<li>Open it using geany.</li>
+				<li>Under "Build" option, click the "javafx" button.</li>
+				<li>Wait for the program being compiled.</li>
+				<li>Under "Build" option, click the "fx execute" button.</li>
+				<li>Now you will have the output. Enjoy.</li>
+			</ul>
+		</article>
+		<img src = "src/images/output.png" class = "iol">
+	</div></body>
+</html>
