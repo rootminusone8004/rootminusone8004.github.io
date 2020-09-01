@@ -22,3 +22,11 @@ body{
 	background-size: 2000px auto;
 	background-attachment: fixed;
 	font-size: 20px;}
+
+@media(max-width: 767px){
+	.logo{
+	font-family: oxy;
+	font-size: 30px;}
+	.logo2{
+	font-family: oxy;
+	font-size: 20px;}}
