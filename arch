@@ -1,0 +1,20 @@
+#!/bin/bash
+timeout 10s ping google.com;
+read -p "Did you see any output: " ans;
+if [[ $ans -eq 0 ]]
+then
+	echo "It seems that you don't have internet. Make sure you have access to internet. ";
+	exit 0;
+fi
+timedatectl set-ntp true;
+timedatectl status;
+read -p "Is the time setting okay: " ans;
+if [[ $ans -eq 0 ]]
+then
+	echo "please, try to fix it later";
+fi
+fdisk -l;
+read -p "Enter your disk name: " wax;
+wax="fdisk ${wax}";
+$wax;
+true;
