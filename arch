@@ -31,7 +31,7 @@ $wax1="mkfs.ext4 ${wax}";
 $wax1;
 $wax1="mount ${wax} /mnt";
 $wax1;
-pacstrap /mnt base linux-lts linux-lts-headers linux-firmware nano;
+pacstrap -y /mnt nano;
 genfstab -U /mnt >> /mnt/etc/fstab;
 arch-chroot /mnt;
 read -p "Enter your area or continent: " wax;
