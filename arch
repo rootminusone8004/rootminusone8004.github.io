@@ -1,0 +1,43 @@
+#!/bin/bash
+timeout 10s ping google.com;
+read -p "Did you see any output: " ans;
+if [[ $ans -eq 0 ]]
+then
+	echo "It seems that you don't have internet. Make sure you have access to internet. ";
+	exit 0;
+fi
+timedatectl set-ntp true;
+timedatectl status;
+read -p "Is the time setting okay: " ans;
+if [[ $ans -eq 0 ]]
+then
+	echo "please, try to fix it later";
+fi
+fdisk -l;
+read -p "Enter your disk name: " wax;
+wax="fdisk ${wax}";
+$wax;
+lsblk;
+read -p "Enter your efi partition: " wax;
+wax="mkfs.fat -F32 ${wax}";
+$wax;
+read -p "Enter your swap partition: " wax;
+wax1="mkswap ${wax}";
+$wax1;
+wax1="swapon ${wax}";
+$wax1;
+read -p "Enter your root partition: " wax;
+$wax1="mkfs.ext4 ${wax}";
+$wax1;
+$wax1="mount ${wax} /mnt";
+$wax1;
+pacstrap /mnt base linux-lts linux-lts-headers linux-firmware nano;
+genfstab -U /mnt >> /mnt/etc/fstab;
+arch-chroot /mnt;
+read -p "Enter your area or continent: " wax;
+read -p "Enter your city: " wax1;
+wax1="ln -sf /usr/share/zoneinfo/${wax}/${wax1} /etc/localtime";
+$wax1;
+hwclock --systohc;
+nano /etc/locale.gen;
+echo "Thanks for running!";
