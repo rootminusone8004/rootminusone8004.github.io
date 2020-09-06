@@ -57,7 +57,6 @@ wax1="passwd ${wax}";
 $wax1;
 wax1="usermod -aG wheel,audio,video,optical,storage ${wax}";
 $wax1;
-pacman -S sudo;
 EDITOR=nano visudo;
 pacman -S grub efibootmgr dosfstools os-prober mtools;
 hmm="mkdir /boot/EFI";
