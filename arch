@@ -33,7 +33,7 @@ $wax1;
 sleep 10;
 wax1="mount ${wax} /mnt";
 $wax1;
-hmm="pacstrap /mnt base base-devel xorg linux-lts linux-lts-headers linux-firmware nano";
+hmm="pacstrap /mnt base base-devel xorg";
 $hmm;
 hmm="genfstab -U /mnt >> /mnt/etc/fstab";
 $hmm;
