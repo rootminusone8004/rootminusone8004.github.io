@@ -17,4 +17,4 @@ fdisk -l;
 read -p "Enter your disk name: " wax;
 wax="fdisk ${wax}";
 $wax;
-true;
+echo "Thanks for running";
