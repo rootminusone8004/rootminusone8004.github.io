@@ -1,0 +1,71 @@
+#!/bin/bash
+timeout 10s ping google.com;
+read -p "Did you see any output: " ans;
+if [[ $ans -eq 0 ]]
+then
+	echo "It seems that you don't have internet. Make sure you have access to internet. ";
+	exit 0;
+fi
+timedatectl set-ntp true;
+timedatectl status;
+read -p "Is the time setting okay: " ans;
+if [[ $ans -eq 0 ]]
+then
+	echo "please, try to fix it later";
+fi
+fdisk -l;
+read -p "Enter your disk name: " wax;
+wax="fdisk ${wax}";
+$wax;
+lsblk;
+read -p "Enter your efi partition: " eff;
+wax="mkfs.fat -F32 ${eff}";
+$wax;
+read -p "Enter your swap partition: " wax;
+wax1="mkswap ${wax}";
+$wax1;
+wax1="swapon ${wax}";
+$wax1;
+read -p "Enter your root partition: " wax;
+$wax1="mkfs.ext4 ${wax}";
+$wax1;
+$wax1="mount ${wax} /mnt";
+$wax1;
+hmm="pacstrap /mnt base base-devel xorg linux-lts linux-lts-headers linux-firmware nano";
+$hmm;
+hmm="genfstab -U /mnt >> /mnt/etc/fstab";
+$hmm;
+hmm="arch-chroot /mnt";
+$hmm;
+read -p "Enter your area or continent: " wax;
+read -p "Enter your city: " wax1;
+wax1="ln -sf /usr/share/zoneinfo/${wax}/${wax1} /etc/localtime";
+$wax1;
+hwclock --systohc;
+hmm="nano /etc/locale.gen";
+$hmm;
+locale-gen;
+read -p "Enter your device name: " wax;
+echo "${wax}" >> /etc/hostname;
+ans="127.0.0.1\tlocalhost\n::t\t\tlocalhost\n127.0.1.1\t${ans}.localdomain\t${ans}";
+printf $ans >> /etc/hosts;
+passwd;
+read -p "Enter the username: " wax;
+wax1="passwd ${wax}";
+$wax1;
+wax1="usermod -aG wheel,audio,video,optical,storage ${wax}";
+$wax1;
+pacman -S sudo;
+EDITOR=nano visudo;
+pacman -S grub efibootmgr dosfstools os-prober mtools;
+hmm="mkdir /boot/EFI";
+$hmm;
+hmm="mount ${eff} /boot/EFI";
+$hmm;
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck;
+hmm="grub-mkconfig -o /boot/grub/grub.cfg";
+$hmm;
+pacman -S networkmanager lightdm-gtk-greeter git cinnamon;
+systemctl enable NetworkManager;
+systemctl enable lightdm;
+echo "Thanks for running!";
