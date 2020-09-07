@@ -28,7 +28,7 @@ grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck;
 sleep 20;
 hmm="grub-mkconfig -o /boot/grub/grub.cfg";
 $hmm;
-pacman -S networkmanager lightdm-gtk-greeter git cinnamon;
+pacman -S networkmanager lightdm-gtk-greeter git cinnamon terminator;
 systemctl enable NetworkManager;
 systemctl enable lightdm;
 echo "Thanks for running!";
