@@ -26,7 +26,7 @@ $wax1;
 wax1="swapon ${wow}${wax}";
 $wax1;
 sleep 5;
-read -p "Enter your root partition: " wax;
+read -p "Enter your root partition number: " wax;
 wax1="mkfs.ext4 ${wow}${wax}";
 $wax1;
 sleep 10;
