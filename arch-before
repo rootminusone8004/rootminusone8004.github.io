@@ -37,6 +37,6 @@ hmm="pacstrap /mnt base base-devel xorg linux-lts linux-lts-headers linux-firmwa
 $hmm;
 hmm="genfstab -U /mnt >> /mnt/etc/fstab";
 $hmm;
+echo "Thanks for running! Now run the second script";
 hmm="arch-chroot /mnt";
 $hmm;
-echo "Thanks for running! Now run the second script";
