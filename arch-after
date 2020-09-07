@@ -13,6 +13,8 @@ ans="127.0.0.1\tlocalhost\n::t\t\tlocalhost\n127.0.1.1\t${wax}.localdomain\t${wa
 printf $ans >> /etc/hosts;
 passwd;
 read -p "Enter the username: " wax;
+wax1="useradd -m ${wax}";
+$wax1;
 wax1="passwd ${wax}";
 $wax1;
 wax1="usermod -aG wheel,audio,video,optical,storage ${wax}";
