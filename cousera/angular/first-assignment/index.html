@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Items For Launch</title>
+    <style>
+        button{
+            margin-top: 10px;
+            margin-bottom: 10px;}
+    </style>
+</head>
+<body ng-app = "LunchCheck">
+    <div ng-controller = "LunchCheckController">
+        <input type = "text" ng-model = "name">
+        <div><button ng-click = "counter()">Check If Too Much</button></div>
+        {{result}}
+    </div>
+    <script src = "angular.min.js"></script>
+    <script src = "app.js"></script>
+</body>
+</html>
