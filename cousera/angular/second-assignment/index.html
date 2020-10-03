@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "angular.min.js"></script>
+    <script src = "app.js"></script>
+    <title>Assignment 2</title>
+</head>
+<body ng-app = "ShoppingListCheckOff" style = "font-size: 20px;">
+	<h2>Shopping List Checking</h2>
+	
+    <div ng-controller = "ToBuyController as tolist">
+		<h3>To Buy:</h3>
+		<ul><li ng-repeat = "itm in tolist.items">
+			Buy {{itm.quantity}} {{itm.name}}
+			<button ng-click = "tolist.buy($index)">Bought</button>
+		</li></ul>
+		<div ng-if = "tolist.items.length == 0">Everything is bought!</div>
+    </div>
+    
+    <div ng-controller = "AlreadyBoughtController as alredylist">
+		<h3>Already Bought:</h3>
+		<ul><li ng-repeat = "itm in alredylist.items">
+			Bought {{itm.quantity}} {{itm.name}}
+		</li></ul>
+		<div ng-if = "alredylist.items.length == 0">Nothing bought yet.</div>
+    </div>
+</body>
+</html>
