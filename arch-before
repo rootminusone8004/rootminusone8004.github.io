@@ -18,24 +18,49 @@ read -p "Enter your disk name: " wow;
 wax="cfdisk ${wow}";
 $wax;
 read -p "Enter your efi partition number: " eff;
-wax="mkfs.fat -F32 ${wow}${eff}";
-$wax;
+if [[$eff -eq 0 ]]
+then
+	echo "no efi partition found!"
+else
+	wax="mkfs.fat -F32 ${wow}${eff}";
+	$wax;
+fi
 read -p "Enter your swap partition number: " wax;
-wax1="mkswap ${wow}${wax}";
-$wax1;
-wax1="swapon ${wow}${wax}";
-$wax1;
-sleep 5;
+if [[$wax -eq 0]]
+then
+	echo "no swap partition found!"
+else
+	wax1="mkswap ${wow}${wax}";
+	$wax1;
+	wax1="swapon ${wow}${wax}";
+	$wax1;
+	sleep 5;
+fi
 read -p "Enter your root partition number: " wax;
 wax1="mkfs.ext4 ${wow}${wax}";
 $wax1;
 sleep 10;
+read -p "Enter your home partition number: " wax2;
+if [[$wax2 -eq 0]]
+then
+	echo "No home partition found!"
+else
+	wax1="mkfs.ext4 ${wow}${wax2}";
+	$wax1;
+fi
 wax1="mount ${wow}${wax} /mnt";
 $wax1;
+if [[$wax2 -ne 0]]
+then
+	wax1="mkdir /mnt/home";
+	$wax1;
+	wax3="mount ${wow}${wax2} /mnt/home";
+	$wax3;
+fi
 hmm="pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano sudo";
 $hmm;
 hmm="genfstab -U /mnt >> /mnt/etc/fstab";
 $hmm;
 echo "Thanks for running! Now run the second script";
-hmm="arch-chroot /mnt";
+hmm="arch-chroot /mnt /bin/bash";
 $hmm
