@@ -58,7 +58,7 @@ then
 	wax3="mount ${wow}${wax2} /mnt/home";
 	$wax3;
 fi
-hmm="pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano sudo";
+hmm="pacstrap -i /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano sudo";
 $hmm;
 hmm="genfstab -U /mnt >> /mnt/etc/fstab";
 $hmm;
