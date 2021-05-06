@@ -1,5 +1,6 @@
 #!/bin/bash
 ping -c 5 gnu.org;
+sleep 5;
 read -p "Did you see any output: " ans;
 if [[ $ans -eq 0 ]]
 then
