@@ -1,5 +1,5 @@
 #!/bin/bash
-timeout 10s ping google.com;
+ping -c 5 gnu.org;
 read -p "Did you see any output: " ans;
 if [[ $ans -eq 0 ]]
 then
@@ -13,9 +13,9 @@ if [[ $ans -eq 0 ]]
 then
 	echo "please, try to fix it later";
 fi
-fdisk -l;
+lsblk;
 read -p "Enter your disk name: " wow;
-wax="fdisk ${wow}";
+wax="cfdisk ${wow}";
 $wax;
 read -p "Enter your efi partition number: " eff;
 wax="mkfs.fat -F32 ${wow}${eff}";
@@ -32,7 +32,7 @@ $wax1;
 sleep 10;
 wax1="mount ${wow}${wax} /mnt";
 $wax1;
-hmm="pacstrap /mnt base base-devel xorg linux-lts linux-lts-headers linux-firmware nano";
+hmm="pacstrap /mnt base base-devel linux-lts linux-lts-headers linux-firmware nano sudo";
 $hmm;
 hmm="genfstab -U /mnt >> /mnt/etc/fstab";
 $hmm;
