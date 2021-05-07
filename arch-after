@@ -22,7 +22,7 @@ $wax1;
 EDITOR=nano visudo;
 pacman -S grub
 read -p "Is the installation UEFI: " lok;
-if [[ lok -eq 1 ]]
+if [[ $lok -eq 1 ]]
 then
   pacman -S efibootmgr dosfstools os-prober mtools;
   hmm="mkdir /boot/EFI";
