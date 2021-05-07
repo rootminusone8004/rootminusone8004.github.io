@@ -33,7 +33,8 @@ then
   grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck;
 else
   read -p "Enter the installation disk: " eff;
-  pio="grub-install ${eff}"
+  pio="grub-install ${eff}";
+  $pio;
 fi
 sleep 20;  
 hmm="grub-mkconfig -o /boot/grub/grub.cfg";
