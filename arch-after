@@ -3,7 +3,7 @@ read -p "Enter your area or continent: " wax;
 read -p "Enter your city: " wax1;
 wax1="ln -sf /usr/share/zoneinfo/${wax}/${wax1} /etc/localtime";
 $wax1;
-hwclock --systohc;
+hwclock --systohc --utc;
 hmm="nano /etc/locale.gen";
 $hmm;
 locale-gen;
@@ -20,14 +20,21 @@ $wax1;
 wax1="usermod -aG wheel,audio,video,optical,storage ${wax}";
 $wax1;
 EDITOR=nano visudo;
-pacman -S grub efibootmgr dosfstools os-prober mtools;
-hmm="mkdir /boot/EFI";
-$hmm;
-read -p "Enter your efi partition: " eff;
-hmm="mount ${eff} /boot/EFI";
-$hmm;
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck;
-sleep 20;
+pacman -S grub
+read -p "Is the installation UEFI: " lok;
+if [[ lok -eq 1 ]]
+then
+  pacman -S efibootmgr dosfstools os-prober mtools;
+  hmm="mkdir /boot/EFI";
+  $hmm;
+  read -p "Enter your efi partition: " eff;
+  hmm="mount ${eff} /boot/EFI";
+  $hmm;
+  grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck;
+else
+  read -p "Enter the installation disk: " eff;
+  pio="grub-install ${eff}"
+sleep 20;  
 hmm="grub-mkconfig -o /boot/grub/grub.cfg";
 $hmm;
 pacman -S networkmanager lightdm-gtk-greeter git cinnamon terminator;
