@@ -19,7 +19,7 @@ read -p "Enter your disk name: " wow;
 wax="cfdisk ${wow}";
 $wax;
 read -p "Enter your efi partition number: " eff;
-if [[$eff -eq 0 ]]
+if [[ $eff -eq 0 ]]
 then
 	echo "no efi partition found!"
 else
@@ -27,7 +27,7 @@ else
 	$wax;
 fi
 read -p "Enter your swap partition number: " wax;
-if [[$wax -eq 0]]
+if [[ $wax -eq 0 ]]
 then
 	echo "no swap partition found!"
 else
@@ -42,7 +42,7 @@ wax1="mkfs.ext4 ${wow}${wax}";
 $wax1;
 sleep 10;
 read -p "Enter your home partition number: " wax2;
-if [[$wax2 -eq 0]]
+if [[ $wax2 -eq 0 ]]
 then
 	echo "No home partition found!"
 else
@@ -51,7 +51,7 @@ else
 fi
 wax1="mount ${wow}${wax} /mnt";
 $wax1;
-if [[$wax2 -ne 0]]
+if [[ $wax2 -ne 0 ]]
 then
 	wax1="mkdir /mnt/home";
 	$wax1;
@@ -60,7 +60,7 @@ then
 fi
 lsblk;
 read -p "Is everything okay? " sure;
-if [[$sure -eq 0]]
+if [[ $sure -eq 0 ]]
 then
 	echo "Something went wrong. Please set the things manually from now on";
 	exit 0;
