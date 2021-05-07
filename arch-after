@@ -20,7 +20,7 @@ $wax1;
 wax1="usermod -aG wheel,audio,video,optical,storage ${wax}";
 $wax1;
 EDITOR=nano visudo;
-pacman -S grub
+pacman -S grub;
 read -p "Is the installation UEFI: " lok;
 if [[ $lok -eq 1 ]]
 then
