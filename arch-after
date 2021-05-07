@@ -32,8 +32,7 @@ then
   $hmm;
   grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck;
 else
-  read -p "Enter the installation disk: " eff;
-  pio="grub-install ${eff}";
+  pio="grub-install /dev/sda";
   $pio;
 fi
 sleep 20;  
