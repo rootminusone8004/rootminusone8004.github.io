@@ -34,6 +34,7 @@ then
 else
   read -p "Enter the installation disk: " eff;
   pio="grub-install ${eff}"
+fi
 sleep 20;  
 hmm="grub-mkconfig -o /boot/grub/grub.cfg";
 $hmm;
