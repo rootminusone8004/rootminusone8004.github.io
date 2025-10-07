@@ -97,6 +97,56 @@ DevOps enthusiast and Computer Science graduate with strong skills in CI/CD, aut
 
 ---
 
+### 🚀 Flask Deployment
+
+> Dockerized Flask and JavaScript Application Deployment with GitOps-Driven CI/CD, Infrastructure Automation, and Cluster Monitoring on Kubernetes
+
+**🎯 Objective**: Automate scalable deployment of a Dockerized Flask app on Kubernetes using GitOps, infrastructure as code, and integrated monitoring.
+
+**🔧 Technologies**: Kubernetes (minikube), ArgoCD, GitHub Actions, Prometheus, Grafana, Linux (Headless)
+
+**📊 Key Achievements**:
+- Containerized **Flask** backend and **JavaScript** frontend applications using Docker
+- Automated Kubernetes cluster setup on AWS EC2 with Terraform and Ansible
+- Implemented GitOps CI/CD pipeline with ArgoCD for streamlined deployments
+- Set up Prometheus and Grafana for effective monitoring of cluster health
+- Delivered end-to-end automation from infrastructure provisioning to app deployment and monitoring
+
+**🛠️ Technical Highlights**:
+- Used **minikube** to configure a custom Kubernetes cluster for application hosting
+- Built **ArgoCD** pipelines for GitOps-based continuous delivery
+- Integrated **GitHub Actions** to trigger builds and tests on code push
+- Configured **Prometheus** for metrics scraping and **Grafana** for insightful dashboards
+
+[![View Project](https://img.shields.io/badge/View%20Project-project--1-388E3C?style=flat-square&logo=github)](https://github.com/rootminusone8004/project1)
+
+---
+
+### 📱 Bazarnote Android App
+
+> Feature-rich Android app built with Java, offering seamless note-taking and task management with an intuitive user interface and offline support.
+
+**🎯 Objective**: Develop a lightweight, user-friendly Android application for efficient note-taking and task organization using Java and Android SDK.
+
+**🔧 Technologies**: Java, Android SDK, SQLite, Material Design, Intellij IDEA
+
+**📊 Key Achievements**:
+- Designed and implemented a clean, intuitive UI with Material Design principles
+- Built offline-capable note-taking functionality using SQLite for local data persistence
+- Integrated task management features including reminders and prioritization
+- Ensured smooth performance and compatibility across various Android devices
+- Delivered a fully functional app with scalable architecture and modular codebase
+
+**🛠️ Technical Highlights**:
+- Developed core app features using native Android SDK components
+- Used SQLite database for efficient local storage and retrieval of notes and tasks
+- Applied MVVM architectural pattern to separate UI and business logic
+- Implemented responsive UI with RecyclerView, Fragments, and Navigation components
+
+[![View Project](https://img.shields.io/badge/View%20Project-Bazarnote-388E3C?style=flat-square&logo=github)](https://github.com/rootminusone8004/Bazarnote)
+
+---
+
 ## 🎓 Demonstrated Capabilities
 
 **🚀 CI/CD Pipeline Engineering**
@@ -112,7 +162,6 @@ DevOps enthusiast and Computer Science graduate with strong skills in CI/CD, aut
 - Multi-tier application orchestration
 
 **🐧 Linux Systems Administration**
-
 - Proficient with Linux server setup and management (Ubuntu, CentOS)
 - Shell scripting for automation and process optimization
 - User and permission management, security hardening
